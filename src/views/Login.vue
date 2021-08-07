@@ -14,7 +14,7 @@
                     <input type="password" v-model="form.password">
                 </div>
 
-                <button type="submit" @click="addDataLogin">Sign In</button>
+                <button type="submit" @click="checkDataLogin">Sign In</button>
 
                 <p>
                     Create new account
@@ -39,12 +39,12 @@ export default {
             }
         },
         methods:{
-            addDataLogin(){
+            checkDataLogin(){
             let payload = {
                 email: this.form.email,
                 password: this.form.password,
             }
-            dataStore.dispatch('addDataLogin', payload)
+            dataStore.dispatch('checkDataLogin', payload)
             console.log(payload)
             }
         }
