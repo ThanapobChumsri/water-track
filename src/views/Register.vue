@@ -1,26 +1,26 @@
 <template>
-      <div>
+      <div class="vue-tempalte">
             <form>
                   <h3>Sign Up</h3>
 
-                  <div>
+                  <div class="form-group">
                   <label>Full Name </label>
-                  <input type="text" v-model="form.name">
+                  <input type="text" class="form-control form-control-lg" v-model="form.name">
                   </div>
 
                   <div>
                   <label>Email address </label>
-                  <input type="email" v-model="form.email">
+                  <input type="email" class="form-control form-control-lg" v-model="form.email">
                   </div>
 
                   <div>
                   <label>Password </label>
-                  <input type="password" v-model="form.password">
+                  <input type="password" class="form-control form-control-lg" v-model="form.password">
                   </div>
 
-                  <button type="submit" @click="addDataRegister">Sign Up</button>
+                  <button type="submit" class="btn btn-dark btn-lg btn-block" @click="addDataRegister">Sign Up</button>
 
-                  <p>
+                  <p class="forgot-password text-right">
                   Already registered 
                   <router-link to="/login">sign in?</router-link>
                   </p>

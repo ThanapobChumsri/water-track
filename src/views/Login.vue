@@ -1,22 +1,22 @@
 <template>
-    <div>
+    <div class="vue-tempalte">
         <form>
             <div>
                 <h3>Sign In</h3>
 
-                <div>
+                <div class="form-group">
                     <label>Email address </label>
-                    <input type="email" v-model="form.email">
+                    <input type="email" class="form-control form-control-lg" v-model="form.email">
                 </div>
 
                 <div>
                     <label>Password </label>
-                    <input type="password" v-model="form.password">
+                    <input type="password" class="form-control form-control-lg" v-model="form.password">
                 </div>
 
-                <button type="submit" @click="checkDataLogin">Sign In</button>
+                <button type="submit" class="btn btn-dark btn-lg btn-block" @click="checkDataLogin">Sign In</button>
 
-                <p>
+                <p class="forgot-password text-right mt-2 mb-4">
                     Create new account
                     <router-link to="/register">sign up?</router-link>
                 </p>
