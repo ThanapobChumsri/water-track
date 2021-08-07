@@ -10,7 +10,7 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Price</th>
+            <th scope="col">Point</th>
             <th scope="col">Remaining</th>
             <th scope="col">Description</th>
             <th scope="col">#####</th>
