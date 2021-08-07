@@ -14,10 +14,16 @@ export default new Vuex.Store({
       addRegister (state,{payload}){
         state.data.push(payload)
       },
+      checkLogin (state,{payload}){
+        state.data.push(payload)
+      },
   },
   actions: {
       addDataRegister({commit}, payload){
         commit("addRegister",{payload})
+      },
+      checkDataLogin({commit}, payload){
+        commit("checkLogin",{payload})
       },
   },
   modules: {
