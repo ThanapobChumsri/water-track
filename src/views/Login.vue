@@ -14,7 +14,7 @@
                     <input type="password" class="form-control form-control-lg" v-model="form.password">
                 </div>
 
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+                <button type="submit" class="btn btn-info btn-lg btn-block">Sign In</button>
 
                 <p class="forgot-password text-right mt-2 mb-4">
                     Create new account

@@ -31,7 +31,7 @@
           </li>
         </ul>
         <span class="navbar-text col-1"> POINT:1000 </span>
-        <button @click="login" v-if="!isAuthen()" class="btn btn-danger">Login</button>
+        <button @click="login" v-if="!isAuthen()" class="btn btn-success">Login</button>
         <button @click="logout" v-if="isAuthen()" class="btn btn-danger">Logout</button>
       </div>
     </div>

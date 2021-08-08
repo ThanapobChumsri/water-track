@@ -18,7 +18,7 @@
                   <input type="password" class="form-control form-control-lg" v-model="form.password">
                   </div>
 
-                  <button type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                  <button type="submit" class="btn btn-info btn-lg btn-block">Sign Up</button>
 
                   <p class="forgot-password text-right">
                   Already registered 
