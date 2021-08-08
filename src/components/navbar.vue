@@ -31,14 +31,31 @@
           </li>
         </ul>
         <span class="navbar-text col-1"> POINT:1000 </span>
-        <button class="btn btn-danger">Logout</button>
+        <button @click="logout" class="btn btn-danger">Logout</button>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-export default {};
+import AuthService from '@/services/AuthServices'
+export default {
+  methods:{
+    logout(){
+      
+      this.$swal("You really wanna leave?","Please confirm",{ icon:"warning",buttons:{Yes:true,cancel:"No"}, }).then(
+        (logout) =>{
+          if(logout){
+            AuthService.logout()
+            
+            this.$swal("Logout Success","","success")
+            this.$router.push('/login')
+          }
+        })
+    
+    },
+  },
+};
 </script>
 
 <style>
