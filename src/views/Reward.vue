@@ -9,6 +9,7 @@
       <table class="table my-3">
         <thead>
           <tr>
+            <th scope="col">Number</th>
             <th scope="col">Name</th>
             <th scope="col">Point</th>
             <th scope="col">Remaining</th>
@@ -20,6 +21,7 @@
         </thead>
         <tbody>
           <tr v-for="reward in data" :key="reward.id">
+            <td>{{reward.id}}</td>
             <td>{{ reward.name }}</td>
             <td>{{ reward.price }}</td>
             <td>{{reward.remaining}}</td>
@@ -28,7 +30,7 @@
               <button class="btn btn-success">แลก</button>
             </td>
             <td>
-              <button class="btn btn-warning">แก้ไข</button>
+              <button class="btn btn-warning" @click="editReward">แก้ไข</button>
             </td>
             <td>
               <button class="btn btn-danger">ลบ</button>
@@ -43,7 +45,11 @@
 <script>
 import axios from "axios";
 export default {
-  methods: {},
+  methods: {
+    editReward() {
+      this.$router.push("/editreward");
+    },
+  },
   created() {
     axios.get("http://localhost:1337/water-rewards").then((res) => {
       this.data = res.data;

@@ -10,7 +10,7 @@ import Reward from '../views/Reward.vue'
 import History from '../views/History.vue'
 import Leaderboard from '../views/Leaderboard.vue'
 import Addreward from '../views/Addreward.vue'
-
+import editReward from '../views/editReward.vue'
 
 
 Vue.use(VueRouter)
@@ -65,8 +65,12 @@ const routes = [
     path: '/addreward',
     name: 'Addreward',
     component: Addreward
+  },
+  {
+    path: '/editreward',
+    name: 'Editreward',
+    component: editReward
   }
-  
 ]
 
 const router = new VueRouter({

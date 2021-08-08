@@ -1,5 +1,14 @@
 <template>
-  <div class="container mt-2">
+    <div class="container mt-2">
+    <div class="mt-5">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Number"
+        aria-label="default input example"
+        v-model="form.id"
+      />
+    </div>
     <div class="mt-5">
       <input
         class="form-control"
@@ -38,7 +47,7 @@
     </div>
     <div class="mt-5">
       <p align="center">
-        <a @click="addReward" class="btn btn-primary" href="/reward" role="button">Add</a>
+        <a @click="editReward" class="btn btn-primary" href="/reward" role="button">Edit</a>
       </p>
     </div>
   </div>
@@ -50,6 +59,7 @@ export default {
   data() {
     return {
       form: {
+        id: "",
         Name: "",
         Price: "",
         Remaining: "",
@@ -58,33 +68,35 @@ export default {
     }
   },
   methods: {
-    addReward() {
-      let payload = {
-        name: this.form.Name,
-        price: this.form.Price,
-        remaining: this.form.Remaining,
-        desc: this.form.Description
-      }
-
-      axios.post("http://localhost:1337/water-rewards", payload).then((res) => {
-        if (res.status ===200) {
-            return {
-              success: true,
-              data: res.data
-            }
-          } 
-        else {
-        console.error(res)
-        return {
-          success: true,
-          message: "Unknown status code: " + res.status
+    editReward() {
+        let payload = {
+            name: this.form.Name,
+            price: this.form.Price,
+            remaining: this.form.Remaining,
+            desc: this.form.Description
         }
-      }
-      });
+
+        let url = "http://localhost:1337/water-rewards/" + this.form.id
+        axios.put(url, payload).then((res) => {
+            if (res.status ===200) {
+                return {
+                success: true,
+                data: res.data
+                }
+            } 
+            else {
+                console.error(res)
+                return {
+                success: true,
+                message: "Unknown status code: " + res.status
+                }
+            }
+        });
     }
   }
 };
 </script>
 
 <style>
+
 </style>
