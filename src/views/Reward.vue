@@ -3,7 +3,7 @@
     <div class="container my-3">
       <h1 class="display-4">Reward</h1>
       <p align="right">
-        <a class="btn btn-primary" href="/addreward" role="button">AddReward</a>
+        <a class="btn btn-primary" v-if="isAuthen()" href="/addreward" role="button">AddReward</a>
       </p>
 
       <table class="table my-3">
@@ -27,13 +27,13 @@
             <td>{{reward.remaining}}</td>
             <td>{{ reward.desc }}</td>
             <td>
-              <button class="btn btn-success">แลก</button>
+              <button class="btn btn-success" v-if="isAuthen()" >แลก</button>
             </td>
             <td>
-              <button class="btn btn-warning" @click="editReward">แก้ไข</button>
+              <button class="btn btn-warning" v-if="isAuthen()" @click="editReward">แก้ไข</button>
             </td>
             <td>
-              <button class="btn btn-danger">ลบ</button>
+              <button class="btn btn-danger" v-if="isAuthen()" >ลบ</button>
             </td>
           </tr>
         </tbody>
@@ -44,8 +44,14 @@
 
 <script>
 import axios from "axios";
+//import AuthService from '@/services/AuthServices'
+import AuthUser from "@/store/AuthUser"
 export default {
   methods: {
+    isAuthen() {
+      //return AuthService.isAuthen()
+      return AuthUser.getters.isAuthen
+    },
     editReward() {
       this.$router.push("/editreward");
     },

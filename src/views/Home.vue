@@ -7,15 +7,20 @@
       </div>
     </div>
     <div class="mt-5" style="text-align:center">
-      <button class="btn btn-success">เพิ่ม</button>
+      <button v-if="isAuthen()" class="btn btn-success">เพิ่ม</button>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import AuthUser from "@/store/AuthUser"
 export default {
-  methods: {},
+  methods: {
+    isAuthen() {
+      return AuthUser.getters.isAuthen
+    },
+  },
   created() {
     axios.get("http://localhost:1337/water-histories").then((res) => {
       this.data = res.data;

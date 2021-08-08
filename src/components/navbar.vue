@@ -31,29 +31,35 @@
           </li>
         </ul>
         <span class="navbar-text col-1"> POINT:1000 </span>
-        <button @click="logout" class="btn btn-danger">Logout</button>
+        <button @click="login" v-if="!isAuthen()" class="btn btn-danger">Login</button>
+        <button @click="logout" v-if="isAuthen()" class="btn btn-danger">Logout</button>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import AuthService from '@/services/AuthServices'
+//import AuthService from '@/services/AuthServices'
+import AuthUser from "@/store/AuthUser"
 export default {
   methods:{
+    isAuthen() {
+      return AuthUser.getters.isAuthen
+    },
     logout(){
-      
       this.$swal("You really wanna leave?","Please confirm",{ icon:"warning",buttons:{Yes:true,cancel:"No"}, }).then(
         (logout) =>{
           if(logout){
-            AuthService.logout()
-            
+            //AuthService.logout()
+            AuthUser.dispatch('logout')
             this.$swal("Logout Success","","success")
             this.$router.push('/login')
           }
         })
-    
     },
+    login(){
+      this.$router.push('/login')
+    }
   },
 };
 </script>
