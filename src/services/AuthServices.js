@@ -57,7 +57,46 @@ export default{
     logout(){
         localStorage.removeItem(auth_key)
     },
-    register(){
-
+    async register({ username, email, password}){
+        try{
+            let url = api_endpoint+ '/auth/local/register'
+            let body = {
+                username: username,
+                email: email,
+                password: password
+            }
+            let res = await Axios.post(url, body)
+            if(res.status === 200){
+                localStorage.setItem(auth_key, JSON.stringify(res.data))
+                
+                return{
+                    success: true,
+                    user: res.data.user,
+                    jwt: res.data.jwt
+                }
+            }
+            else{
+                console.log(res)
+                return{
+                    success: false,
+                    message: "Unknown status code "+res.status
+                }
+            }
+        }catch(e){
+            if (e.response.status === 400){
+                
+                return{
+                    success: false,
+                    message: e.response.data.message[0].messages[0].message,
+                }
+            }
+            else{
+                console.error(e.response)
+                return{
+                    success : false,
+                    message : "Unknown error: "+ e.response
+                }
+            }
+        }
     },
 }

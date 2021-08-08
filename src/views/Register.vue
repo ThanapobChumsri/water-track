@@ -1,6 +1,6 @@
 <template>
       <div class="vue-tempalte">
-            <form @submit.prevent="addDataRegister">
+            <form @submit.prevent="register">
                   <h3>Sign Up</h3>
 
                   <div class="form-group">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import dataStore from '@/store/data'
+import AuthService from '@/services/AuthServices'
 export default {
       data() {
             return {
@@ -37,21 +37,21 @@ export default {
                     username: '',
                     email:'',
                     password:'',
-                    
                 }
             }
         },
         methods:{
-            addDataRegister(){
-            let payload = {
-                username: this.form.username,
-                email: this.form.email,
-                password: this.form.password,
+            async register(){
+            let res = await AuthService.register(this.form)
+            if(res.success){
+                this.$swal("Register Success",`Welcome, ${res.user.username}`,"success")
+                this.$router.push('/main')
             }
-            dataStore.dispatch('addDataRegister', payload)
-            console.log(payload)
+            else{
+                this.$swal("Register Failed",res.message,"error")
             }
         }
+    }
 }
 </script>
 
