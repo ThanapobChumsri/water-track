@@ -38,7 +38,7 @@
     </div>
     <div class="mt-5">
       <p align="center">
-        <a @click="addReward" class="btn btn-primary" href="#" role="button">Add</a>
+        <a @click="addReward" class="btn btn-primary" href="/reward" role="button">Add</a>
       </p>
     </div>
   </div>
