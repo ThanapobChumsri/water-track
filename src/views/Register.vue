@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import AuthService from '@/services/AuthServices'
+//import AuthService from '@/services/AuthServices'
+import AuthUser from "@/store/AuthUser"
 export default {
       data() {
             return {
@@ -42,7 +43,8 @@ export default {
         },
         methods:{
             async register(){
-            let res = await AuthService.register(this.form)
+            //let res = await AuthService.register(this.form)
+             let res = await AuthUser.dispatch('register', this.form)
             if(res.success){
                 this.$swal("Register Success",`Welcome, ${res.user.username}`,"success")
                 this.$router.push('/main')

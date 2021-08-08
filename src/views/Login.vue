@@ -27,7 +27,8 @@
 </template>
 
 <script>
-import AuthService from "@/services/AuthServices"
+//import AuthService from "@/services/AuthServices"
+import AuthUser from "@/store/AuthUser"
 export default {
     data() {
         return {
@@ -41,9 +42,11 @@ export default {
     methods:{
         async login(){
             console.log(this.form)
-            let res = await AuthService.login(this.form)
+            let res = await AuthUser.dispatch('login', this.form)
+            //let res = await AuthService.login(this.form)
             if(res.success){
                 this.$swal("Login Success",`Welcome, ${res.user.username}`,"success")
+                console.log(res.user.role.type)
                  if(res.user.role.type == 'authenticated'){
                     this.$router.push('/home')
                 }else{
