@@ -1,6 +1,6 @@
 <template>
     <div class="vue-tempalte">
-        <form>
+        <form @submit.prevent="login">
             <div>
                 <h3>Sign In</h3>
 
@@ -14,7 +14,7 @@
                     <input type="password" class="form-control form-control-lg" v-model="form.password">
                 </div>
 
-                <button type="submit" class="btn btn-dark btn-lg btn-block" @click="checkDataLogin">Sign In</button>
+                <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
 
                 <p class="forgot-password text-right mt-2 mb-4">
                     Create new account
@@ -27,26 +27,22 @@
 </template>
 
 <script>
-import dataStore from '@/store/data'
+import AuthService from "@/services/AuthServices"
 export default {
     data() {
-            return {
-                form:{
-                    email:'',
-                    password:'',
+        return {
+            form:{
+                email:'',
+                password:'',
                     
                 }
             }
         },
-        methods:{
-            checkDataLogin(){
-            let payload = {
-                email: this.form.email,
-                password: this.form.password,
-            }
-            dataStore.dispatch('checkDataLogin', payload)
-            console.log(payload)
-            }
+    methods:{
+        async login(){
+            console.log(this.form)
+            let res = await AuthService.login(this.form)
+        },
         }
 }
 </script>

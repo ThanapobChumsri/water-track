@@ -1,11 +1,11 @@
 <template>
       <div class="vue-tempalte">
-            <form>
+            <form @submit.prevent="addDataRegister">
                   <h3>Sign Up</h3>
 
                   <div class="form-group">
                   <label>Full Name </label>
-                  <input type="text" class="form-control form-control-lg" v-model="form.name">
+                  <input type="text" class="form-control form-control-lg" v-model="form.username">
                   </div>
 
                   <div>
@@ -18,7 +18,7 @@
                   <input type="password" class="form-control form-control-lg" v-model="form.password">
                   </div>
 
-                  <button type="submit" class="btn btn-dark btn-lg btn-block" @click="addDataRegister">Sign Up</button>
+                  <button type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
 
                   <p class="forgot-password text-right">
                   Already registered 
@@ -34,7 +34,7 @@ export default {
       data() {
             return {
                 form:{
-                    name: '',
+                    username: '',
                     email:'',
                     password:'',
                     
@@ -44,7 +44,7 @@ export default {
         methods:{
             addDataRegister(){
             let payload = {
-                name: this.form.name,
+                username: this.form.username,
                 email: this.form.email,
                 password: this.form.password,
             }
