@@ -50,7 +50,7 @@ export default {
                  if(res.user.role.type == 'authenticated'){
                     this.$router.push('/home')
                 }else{
-                    this.$router.push('/admin')
+                    this.$router.push('/leaderboard')
                     }
             } 
             else{

@@ -23,10 +23,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/reward">Reward</a>
           </li>
-          <li class="nav-item">
+          <li v-if="isAuthen()" class="nav-item">
             <a class="nav-link" href="/history">History</a>
           </li>
-          <li v-if="isAdmin()" class="nav-item">
+          <li v-if="isAuthen() && isAdmin()" class="nav-item">
             <a class="nav-link" href="/leaderboard">Leaderboard</a>
           </li>
         </ul>
@@ -48,7 +48,7 @@ export default {
       return AuthUser.getters.isAuthen
     },
     isAdmin() {
-      return AuthUser.getters.user.role.name == "admin";
+      return AuthUser.getters.user.role.type == "admin";
     },
     logout(){
       this.$swal("You really wanna leave?","Please confirm",{ icon:"warning",buttons:{Yes:true,cancel:"No"}, }).then(

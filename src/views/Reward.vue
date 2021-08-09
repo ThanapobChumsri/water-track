@@ -3,8 +3,8 @@
     <div class="container my-3">
       <h1 class="display-4">Reward
       </h1>
-      <p align="right" v-if="isAdmin()">
-        <a class="btn btn-primary" v-if="isAuthen()" href="/addreward" role="button">AddReward</a>
+      <p align="right" v-if="isAuthen() && isAdmin()">
+        <a class="btn btn-primary" href="/addreward" role="button">AddReward</a>
       </p>
 
       <table class="table my-3">
@@ -15,9 +15,9 @@
             <th scope="col">Point</th>
             <th scope="col">Remaining</th>
             <th scope="col">Description</th>
-            <th scope="col">#####</th>
-            <th v-if="isAdmin()" scope="col">Admin</th>
-            <th v-if="isAdmin()" scope="col">Admin</th>
+            <th v-if="isAuthen()" scope="col">#####</th>
+            <th v-if="isAuthen() && isAdmin()" scope="col">Admin</th>
+            <th v-if="isAuthen() && isAdmin()" scope="col">Admin</th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@ export default {
       return AuthUser.getters.isAuthen
     },
     isAdmin() {
-      return AuthUser.getters.user.role.name == "admin";
+      return AuthUser.getters.user.role.type == "admin";
     },
     editReward() {
       this.$router.push("/editreward");
