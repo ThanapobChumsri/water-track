@@ -42,6 +42,7 @@ export default {
 
 <style>
 body{
-
+  background-image: url("../resources/bg.jpg");
+  background-size: cover;
 }
-</style>
+</style>>

@@ -45,7 +45,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     margin: auto;
-    background-color: rgb(154, 255, 255);
+    background-color: rgb(255, 255, 255);
     background-size: cover;
     height: 70vh;
 }

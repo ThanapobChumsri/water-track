@@ -63,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
     .vue-tempalte{
+        background-color: white;
     border: 2px solid #000000;
     border-radius: 6px;
     padding: 20px 20px;
