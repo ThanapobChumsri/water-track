@@ -1,5 +1,5 @@
 <template>
-      <div class="vue-tempalte">
+      <div class="vue-tempalte my-5">
             <form @submit.prevent="register">
                   <h3>Sign Up</h3>
 
@@ -18,7 +18,7 @@
                   <input type="password" class="form-control form-control-lg" v-model="form.password">
                   </div>
 
-                  <button type="submit" class="btn btn-info btn-lg btn-block">Sign Up</button>
+                  <button type="submit" class="btn btn-info btn-lg btn-block mb-1">Sign Up</button>
 
                   <p class="forgot-password text-right">
                   Already registered 
@@ -58,7 +58,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+      .vue-tempalte{
+        border: 2px solid #000000;
+        border-radius: 6px;
+        padding: 20px 20px;
+      }
       div {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 300px;
         margin-bottom: 20px;
+    }
+        h3{
+        font-size: 40px;
+        color: rgb(16, 0, 247);
+        text-align: center;
+        text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, 40px 40px 2px rgba(206, 89, 55, 0);
+        background-size: cover;
+        margin-bottom: 30px;
     }
 </style>

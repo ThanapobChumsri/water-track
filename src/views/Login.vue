@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-tempalte">
+    <div class="vue-tempalte my-5">
         <form @submit.prevent="login">
             <div>
                 <h3>Sign In</h3>
@@ -62,7 +62,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .vue-tempalte{
+    border: 2px solid #000000;
+    border-radius: 6px;
+    padding: 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    }
+    h3{
+        
+        font-size: 40px;
+        color: rgb(16, 0, 247);
+        text-align: center;
+        text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, 40px 40px 2px rgba(206, 89, 55, 0);
+        background-size: cover;
+        margin-bottom: 30px;
+  
+    }
     div {
+        
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 300px;
         margin-bottom: 20px;
     }
 </style>
