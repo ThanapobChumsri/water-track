@@ -13,7 +13,6 @@
       <tbody>
         <tr v-for="history in data" :key="history.id">
           <td>{{ history.desc }}</td>
-          <td>{{ history.type }}</td>
           <td>{{ history.point }}</td>
         </tr>
       </tbody>
