@@ -6,14 +6,12 @@
       <thead>
         <tr>
           <th scope="col">Desc</th>
-          <th scope="col">Type</th>
           <th scope="col">Point</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="history in data" :key="history.id">
           <td>{{ history.desc }}</td>
-          <td>{{ history.type }}</td>
           <td>{{ history.point }}</td>
         </tr>
       </tbody>
