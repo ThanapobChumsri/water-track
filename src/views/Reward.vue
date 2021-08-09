@@ -56,6 +56,11 @@ export default {
     editReward() {
       this.$router.push("/editreward");
     },
+    deleteReward(event){
+      myid = event.currentTarget.getAttribute("id")
+      console.log(myid)
+     // this.$$router.delete("/water-rewards/" + myid)
+    }
   },
   created() {
     axios.get("http://localhost:1337/water-rewards").then((res) => {

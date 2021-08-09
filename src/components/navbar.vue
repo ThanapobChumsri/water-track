@@ -30,7 +30,7 @@
             <a class="nav-link" href="/leaderboard">Leaderboard</a>
           </li>
         </ul>
-        <span class="navbar-text col-1"> POINT:1000 </span>
+        <span class="navbar-text col-1"> POINT:{{this.point}} </span>
         <button @click="login" v-if="!isAuthen()" class="btn btn-success">Login</button>
         <button @click="logout" v-if="isAuthen()" class="btn btn-danger">Logout</button>
       </div>
@@ -41,6 +41,7 @@
 <script>
 //import AuthService from '@/services/AuthServices'
 import AuthUser from "@/store/AuthUser"
+import axios from "axios";
 export default {
   methods:{
     isAuthen() {
@@ -60,6 +61,17 @@ export default {
     login(){
       this.$router.push('/login')
     }
+  },
+  created() {
+    let user = JSON.parse(localStorage.getItem("auth-login"));
+    axios.get(`http://localhost:1337/users/${user.user.id}`).then((res)=>{
+      this.point = res.data.point
+    })
+},
+  data() {
+    return {
+      point: 0,
+    };
   },
 };
 </script>
