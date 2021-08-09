@@ -6,7 +6,6 @@
       <thead>
         <tr>
           <th scope="col">Desc</th>
-          <th scope="col">Type</th>
           <th scope="col">Point</th>
         </tr>
       </thead>
