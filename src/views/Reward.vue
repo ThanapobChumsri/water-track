@@ -63,15 +63,27 @@ export default {
       axios.delete("http://localhost:1337/water-rewards/" + id)
       window.location.href = "http://localhost:8080/reward";
     },
-    getReward(id) {
+async getReward(id) {
       let url = "http://localhost:1337/water-rewards/" + id;
-      let payload = {
-        name: this.data.name,
-        price: this.data.price,
-        remaining: this.number,
-        desc: this.data.desc
+      const temp = await axios.get(url)
+      let updatePayload = {
+        remaining: temp.data.remaining - 1
       }
-      axios.put(url, payload)
+      await axios.put(url, updatePayload)
+      console.log(temp.data.price);
+      let user = JSON.parse(localStorage.getItem("auth-login"));
+      console.log(user.user.username);
+      let payload = {
+        point: temp.data.price,
+        desc: temp.data.name
+      }
+      axios.post("http://localhost:1337/water-histories/", payload)
+      console.log(user.user.point);
+      let setpoint = {
+        point: user.user.point -= temp.data.price
+      }
+      axios.put("http://localhost:1337/users/" + user.user.id, setpoint)
+      window.location.href = "http://localhost:8080/reward";
     }
   },
   created() {
