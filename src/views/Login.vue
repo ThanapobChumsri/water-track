@@ -72,11 +72,11 @@ export default {
 
     }
     h3{
-        
         font-size: 40px;
-        color: rgb(16, 0, 247);
+        color: rgb(0, 0, 0);
         text-align: center;
-        text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, 40px 40px 2px rgba(206, 89, 55, 0);
+        background-color:rgb(4, 209, 245);
+        background-size: c;
         background-size: cover;
         margin-bottom: 30px;
   
