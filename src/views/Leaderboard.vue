@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-3">
+  <div class="container my-3" style="overflow:scroll;">
     <h1 class="display-4 ">Leaderboard</h1>
     <v-data-table
       :headers="headers"
@@ -14,7 +14,7 @@
 import axios from "axios";
 export default {
   created(){
-    axios.get("http://localhost:1337/water-users").then((res) => {
+    axios.get("http://localhost:1337/users").then((res) => {
       this.users = res.data;
       console.log(this.users);
       });

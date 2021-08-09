@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-3">
+    <div class="container my-3" style="overflow:scroll;">
     <h1 class="display-4">History</h1>
     <table class="table my-3">
       <thead>

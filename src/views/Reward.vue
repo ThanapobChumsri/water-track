@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-3">
+    <div class="container my-3" style="overflow:scroll;">
       <h1 class="display-4">Reward
       </h1>
       <p align="right" v-if="isAuthen() && isAdmin()">
