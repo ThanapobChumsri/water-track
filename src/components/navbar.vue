@@ -30,7 +30,7 @@
             <a class="nav-link" href="/leaderboard">Leaderboard</a>
           </li>
         </ul>
-        <span class="navbar-text col-1"> POINT:{{this.point}} </span>
+        <span class="navbar-text col-1" v-if="isAuthen()" > POINT:{{this.point}} </span>
         <button @click="login" v-if="!isAuthen()" class="btn btn-success">Login</button>
         <button @click="logout" v-if="isAuthen()" class="btn btn-danger">Logout</button>
       </div>
