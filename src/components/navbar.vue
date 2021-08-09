@@ -65,4 +65,10 @@ export default {
 </script>
 
 <style>
+.navbar{
+        border: 1px solid #000000;
+        border-radius: 6px;
+        padding: 20px 20px, 20px,20px;
+        margin: 2px;
+}
 </style>
