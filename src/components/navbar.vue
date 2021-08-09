@@ -26,7 +26,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/history">History</a>
           </li>
-          <li class="nav-item">
+          <li v-if="isAdmin()" class="nav-item">
             <a class="nav-link" href="/leaderboard">Leaderboard</a>
           </li>
         </ul>
@@ -46,6 +46,9 @@ export default {
   methods:{
     isAuthen() {
       return AuthUser.getters.isAuthen
+    },
+    isAdmin() {
+      return AuthUser.getters.user.role.name == "admin";
     },
     logout(){
       this.$swal("You really wanna leave?","Please confirm",{ icon:"warning",buttons:{Yes:true,cancel:"No"}, }).then(

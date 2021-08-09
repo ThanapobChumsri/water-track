@@ -3,7 +3,7 @@
     <div class="container my-3">
       <h1 class="display-4">Reward
       </h1>
-      <p align="right">
+      <p align="right" v-if="isAdmin()">
         <a class="btn btn-primary" v-if="isAuthen()" href="/addreward" role="button">AddReward</a>
       </p>
 
@@ -16,8 +16,8 @@
             <th scope="col">Remaining</th>
             <th scope="col">Description</th>
             <th scope="col">#####</th>
-            <th scope="col">Admin</th>
-            <th scope="col">Admin</th>
+            <th v-if="isAdmin()" scope="col">Admin</th>
+            <th v-if="isAdmin()" scope="col">Admin</th>
           </tr>
         </thead>
         <tbody>
@@ -31,10 +31,10 @@
               <button class="btn btn-success" v-if="isAuthen()" >แลก</button>
             </td>
             <td>
-              <button class="btn btn-warning" v-if="isAuthen()" @click="editReward">แก้ไข</button>
+              <button class="btn btn-warning" v-if="isAuthen() && isAdmin()" @click="editReward">แก้ไข</button>
             </td>
             <td>
-              <button class="btn btn-danger" v-if="isAuthen()" >ลบ</button>
+              <button class="btn btn-danger" v-if="isAuthen() && isAdmin()" >ลบ</button>
             </td>
           </tr>
         </tbody>
@@ -52,6 +52,9 @@ export default {
     isAuthen() {
       //return AuthService.isAuthen()
       return AuthUser.getters.isAuthen
+    },
+    isAdmin() {
+      return AuthUser.getters.user.role.name == "admin";
     },
     editReward() {
       this.$router.push("/editreward");
