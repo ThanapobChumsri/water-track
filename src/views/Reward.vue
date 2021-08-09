@@ -34,9 +34,8 @@
               <button class="btn btn-warning" v-if="isAuthen() && isAdmin()" @click="editReward">แก้ไข</button>
             </td>
             <td>
-              <button class="btn btn-danger" v-if="isAuthen() && isAdmin() " @click="deleteReward" >ลบ</button>
+              <button class="btn btn-danger" v-if="isAuthen() && isAdmin() " @click="deleteReward(reward.id)" >ลบ</button>
             </td>
-            <td>{{call(reward.id)}}</td>
           </tr>
         </tbody>
       </table>
@@ -50,9 +49,6 @@ import axios from "axios";
 import AuthUser from "@/store/AuthUser"
 export default {
   methods: {
-    call(reward_id) {
-      this.number = reward_id
-    },
     isAuthen() {
       //return AuthService.isAuthen()
       return AuthUser.getters.isAuthen
@@ -63,9 +59,8 @@ export default {
     editReward() {
       this.$router.push("/editreward");
     },
-    deleteReward(){
-      let url = "http://localhost:1337/water-rewards/" + this.number;
-      axios.delete(url)
+    deleteReward(id){
+      axios.delete("http://localhost:1337/water-rewards/" + id)
       window.location.href = "http://localhost:8080/reward";
     },
     getReward() {
