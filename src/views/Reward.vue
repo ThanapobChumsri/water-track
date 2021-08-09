@@ -28,7 +28,7 @@
             <td>{{reward.remaining}}</td>
             <td>{{ reward.desc }}</td>
             <td>
-              <button class="btn btn-success" v-if="isAuthen()" @click="getReward">แลก</button>
+              <button class="btn btn-success" v-if="isAuthen()" @click="getReward(reward.id)">แลก</button>
             </td>
             <td>
               <button class="btn btn-warning" v-if="isAuthen() && isAdmin()" @click="editReward">แก้ไข</button>
@@ -63,9 +63,8 @@ export default {
       axios.delete("http://localhost:1337/water-rewards/" + id)
       window.location.href = "http://localhost:8080/reward";
     },
-    getReward() {
-      let url = "http://localhost:1337/water-rewards/" + this.number;
-      this.number = this.data.remaining -1;
+    getReward(id) {
+      let url = "http://localhost:1337/water-rewards/" + id;
       let payload = {
         name: this.data.name,
         price: this.data.price,
