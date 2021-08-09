@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="container my-3">
-      <h1 class="display-4">Reward</h1>
+      <h1 class="display-4">Reward
+      </h1>
       <p align="right">
         <a class="btn btn-primary" v-if="isAuthen()" href="/addreward" role="button">AddReward</a>
       </p>
@@ -71,4 +72,14 @@ export default {
 </script>
 
 <style>
+.container{
+   font-family: "Yomogi", sans-serif;
+        padding: 20px 20px;
+        text-align: center;
+        margin-bottom: 30px;
+        height: 100vh;
+        background-color: white;
+        border: 2px solid #000000;
+        border-radius: 6px;
+}
 </style>

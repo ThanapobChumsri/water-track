@@ -1,6 +1,6 @@
 <template>
   <div class="container my-3">
-    <h1 class="display-4">Leaderboard</h1>
+    <h1 class="display-4 ">Leaderboard</h1>
     <v-data-table
       :headers="headers"
       :items="users"
@@ -39,4 +39,9 @@ export default {
 
 
 <style>
+h1{
+  color:white;
+  background-color: rgb(0, 0, 0);
+}
+
 </style>
