@@ -65,9 +65,9 @@ export default {
       this.$router.push('/login')
     }
   },
-  created() {
+  async created() {
     let user = JSON.parse(localStorage.getItem("auth-login"));
-    axios.get(`http://localhost:1337/users/${user.user.id}`).then((res)=>{
+    await axios.get(`http://localhost:1337/users/${user.user.id}`).then((res)=>{
       this.point = res.data.point
     })
 },

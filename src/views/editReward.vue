@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    editReward() {
+    async editReward() {
         let payload = {
             name: this.form.Name,
             price: this.form.Price,
@@ -77,7 +77,7 @@ export default {
         }
 
         let url = "http://localhost:1337/water-rewards/" + this.form.id
-        axios.put(url, payload).then((res) => {
+        await axios.put(url, payload).then((res) => {
             if (res.status ===200) {
                 return {
                 success: true,

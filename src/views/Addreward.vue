@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    addReward() {
+   async addReward() {
       let payload = {
         name: this.form.Name,
         price: this.form.Price,
@@ -66,7 +66,7 @@ export default {
         desc: this.form.Description
       }
 
-      axios.post("http://localhost:1337/water-rewards", payload).then((res) => {
+      await axios.post("http://localhost:1337/water-rewards", payload).then((res) => {
         if (res.status ===200) {
             return {
               success: true,
