@@ -29,7 +29,7 @@ export default {
           value: "username",
         },
         { text: "Point", value: "point" },
-        { text: "Point ที่ใช้", value: "pointUsed" },
+        //{ text: "Point ที่ใช้", value: "pointUsed" },
       ],
       users: [],
     };
