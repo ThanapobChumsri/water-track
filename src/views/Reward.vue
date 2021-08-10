@@ -59,35 +59,51 @@ export default {
     editReward() {
       this.$router.push("/editreward");
     },
-    deleteReward(id){
-      axios.delete("http://localhost:1337/water-rewards/" + id)
+    async deleteReward(id){
+      await axios.delete("http://localhost:1337/water-rewards/" + id)
       window.location.href = "http://localhost:8080/reward";
     },
 async getReward(id) {
+      let user = JSON.parse(localStorage.getItem("auth-login"));
+      let myUser;
+      await axios.get(`http://localhost:1337/users/${user.user.id}`).then((res)=>{
+       myUser = res.data
+    })
+      
       let url = "http://localhost:1337/water-rewards/" + id;
+      
       const temp = await axios.get(url)
+      
+      if(temp.data.remaining == 0){
+        this.$swal("Out of stock","Sorry","error")
+        return;
+      }
+      if(myUser.point < temp.data.price){
+        this.$swal("Not enough point","Please check you point","error")
+        return;
+      }
       let updatePayload = {
         remaining: temp.data.remaining - 1
       }
       await axios.put(url, updatePayload)
-      console.log(temp.data.price);
-      let user = JSON.parse(localStorage.getItem("auth-login"));
-      console.log(user.user.username);
+
       let payload = {
         point: temp.data.price,
-        desc: temp.data.name
+        desc: temp.data.name,
+        username: myUser.username
       }
-      axios.post("http://localhost:1337/water-histories/", payload)
+      await axios.post("http://localhost:1337/water-histories/", payload)
       console.log(user.user.point);
       let setpoint = {
-        point: user.user.point -= temp.data.price
+        point: myUser.point -= temp.data.price,
+        pointUsed: myUser.pointUsed + temp.data.price
       }
-      axios.put("http://localhost:1337/users/" + user.user.id, setpoint)
+      await axios.put("http://localhost:1337/users/" + user.user.id, setpoint)
       window.location.href = "http://localhost:8080/reward";
     }
   },
-  created() {
-    axios.get("http://localhost:1337/water-rewards").then((res) => {
+  async created() {
+    await axios.get("http://localhost:1337/water-rewards").then((res) => {
       this.data = res.data;
       console.log(this.data);
     });
