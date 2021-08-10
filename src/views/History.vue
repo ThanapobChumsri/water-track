@@ -5,14 +5,18 @@
     <table class="table my-3">
       <thead>
         <tr>
+          <th scope="col">Username</th>
           <th scope="col">Desc</th>
           <th scope="col">Point</th>
+          <th scope="col">Date</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="history in data" :key="history.id">
+          <td>{{ history.username }}</td>
           <td>{{ history.desc }}</td>
           <td>{{ history.point }}</td>
+          <td>{{ history.created_at }}</td>
         </tr>
       </tbody>
     </table>
